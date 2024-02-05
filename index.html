@@ -1,53 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>To Do List</title>
-</head>
-<body>
+  </head>
+  <body>
     <nav id="nav-bar">
-        <h1>To Do List</h1>
-        <h2>Logged in as <span id="login-user">anubhav</span></h2>
+      <h1>To Do List</h1>
+      <h2>Logged in as <span id="login-user">anubhav</span></h2>
     </nav>
     <div>
-        <div id="list-container">
-            <div id="list-container-heading">
-                My Tasks
+      <div id="list-container">
+        <div id="list-container-heading">My Tasks</div>
+        <div id="task-boxes">
+          <div id="task-boxes-list">
+            <div id="task-boxes-list-item-container">
+              <div id="task-boxes-list-item-add">&#43;</div>
+              <span id="task-boxes-list-item-timestamp"></span>
+              <div id="task-boxes-list-item">hello</div>
+              <button id="task-boxes-list-item-properties">&#9998;</button>
+              <!-- <button>Edit</button> -->
             </div>
-            <div id="task-boxes">
-                <div id="task-boxes-list">
-                    <div id="task-boxes-list-item-container">
-                        <div id="task-boxes-list-item-add">&#43;</div>
-                        <span id="task-boxes-list-item-timestamp"></span>
-                        <div id="task-boxes-list-item">
-                            hello
-                        </div>
-                        <button id="task-boxes-list-item-properties">&#9998;</button>
-                        <!-- <button>Edit</button> -->
-                    </div>
-                    <div id="task-boxes-list-item-properties-menu">
-                        <div id="task-boxes-list-item-properties-menu-item-container">
-                            <div>
-                                <h3>TimeStamp: <span></span></h3>
-                            </div>
-                            <div>
-                                <h3>Edit: </h3>
-                                <textarea id="edit-content"></textarea>
-                            </div>
-                            <div>
-                                <h3>Extra Note: </h3>
-                                <textarea  id="add-note"></textarea>
-                            </div>
-                            <div>
-                                <button id="menu-done-button">Done</button>
-                            </div>
-                        </div>
-                    </div>
+            <div id="task-boxes-list-item-properties-menu">
+              <div id="task-boxes-list-item-properties-menu-item-container">
+                <div>
+                  <h3>TimeStamp: <span></span></h3>
                 </div>
+                <div>
+                  <h3>Edit:</h3>
+                  <textarea id="edit-content"></textarea>
+                </div>
+                <div>
+                  <h3>Extra Note:</h3>
+                  <textarea id="add-note"></textarea>
+                </div>
+                <div>
+                  <button id="menu-done-button">Done</button>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
