@@ -53,12 +53,12 @@ body {
     text-align: center;
 }
 
-#task-boxes-list {
+.task-boxes-list {
     list-style: none;
     width: 100%;
 }
 
-#task-boxes-list-item {
+.task-boxes-list-item {
     border-radius: 10px;
     background-color: rgb(240, 103, 126);
     padding: 10px;
@@ -69,22 +69,22 @@ body {
 }
 
 
-#task-boxes-list-item-container {
+.task-boxes-list-item-container {
     /* display: none; */
     display: flex;
     width: 100%;
     font-size: larger;
     align-items: center;
-
+    margin: 10px;
     button {
         margin-left: 10px;
-        margin-right: 10px;
+        margin-right: -10px;
         color: rgb(240, 103, 126);
         /* background-color: pink; */
         border: none;
         font-size: large;
         cursor: pointer;
-        padding: 10px;
+        padding: 15px;
         background-color: white;
         text-wrap: nowrap;
     }
@@ -93,27 +93,53 @@ body {
         background-color: rgb(240, 103, 126);
         color: white;
         border-radius: 10px;
-        box-shadow: 0cqmax;
+        border: none;
         transition: 0.3s;
     }
+    /* button:active {
+        outline: none;
+    } */
+}
+.task-boxes-list-item:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 #task-boxes-list-item-add {
-    font-size: 50px;
+    font-size: 30px;
+    background-color: rgb(240, 103, 126);
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
+    color: white;
+    padding: 10px;
     cursor: pointer;
     margin-right: 5px;
 }
-
 #task-boxes-list-item-add:hover {
-    rotate: 40deg;
-    transition: 0.4s;
+    opacity: 0.7;
+    transition: 0.2s;
 }
+#task-boxes-list-item-add:active {
+    opacity: 0.9;
+    transition: 0.2s;
+}
+.task-boxes-list-item-remove {
+    font-size: 50px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+/* #task-boxes-list-item-add:hover {
+    rotate: 40deg;
+    transition: 0.4s; */
+/* } */
 
 #task-boxes-list-item-properties-menu {
     background-color: pink;
     width: 35%;
     height: 70%;
     margin: auto;
+    padding: 10px;
     /* border: 1px solid; */
     border-radius: 10px;
     position: absolute;
@@ -142,7 +168,6 @@ body {
         margin: 4px;
         cursor: pointer;
         border-radius: 10px;
-
     }
 
     button:hover {
@@ -151,6 +176,9 @@ body {
 
     /* filter: blur(0px); */
 }
+/* #task-boxes-list {
+    display: flex;
+} */
 
 #task-boxes-list-item-properties-menu-timestamp {
     grid-column: 1;

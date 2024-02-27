@@ -16,17 +16,16 @@
         <div id="list-container-heading">My Tasks</div>
         <div id="task-boxes">
           <div id="task-boxes-list">
-            <div id="task-boxes-list-item-container">
-              <div id="task-boxes-list-item-add">&#43;</div>
-              <span id="task-boxes-list-item-timestamp"></span>
-              <div id="task-boxes-list-item">hello</div>
-              <button id="task-boxes-list-item-properties">&#9998;</button>
-              <!-- <button>Edit</button> -->
-            </div>
+            <div><button id="task-boxes-list-item-add">Add</button></div>
+            <!-- <div class="task-boxes-list-item-container">
+              <div class="task-boxes-list-item-remove">&#8722</div>
+              <span class="task-boxes-list-item-timestamp"></span>
+              <div class="task-boxes-list-item">Hello</div>
+              <button class="task-boxes-list-item-properties">&#9998;</button>
+             </div> --> 
             <div id="task-boxes-list-item-properties-menu">
-              <div id="task-boxes-list-item-properties-menu-item-container">
                 <div>
-                  <h3>TimeStamp: <span></span></h3>
+                  <h3>TimeStamp: <span id="timestamp-id"></span></h3>
                 </div>
                 <div>
                   <h3>Edit:</h3>
@@ -38,8 +37,8 @@
                 </div>
                 <div>
                   <button id="menu-done-button">Done</button>
+                  <button id="menu-update-button">Update</button>
                 </div>
-              </div>
             </div>
           </div>
         </div>
