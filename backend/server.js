@@ -1,29 +1,32 @@
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
-// basically 
+import express from 'express'
+import bodyParser from 'body-parser'
 const app = express();
-const cors = require('cors');
-app.use(cors());
-let list = [];
-// This is the default route.n
-// app.use('/',express.static('public\\mainpage'));
-// app.use('/loginpage',express.static('public\\loginPage'));
+import cors from 'cors'
+import {Users} from './src/models/users.models.js'
+import dotenv from 'dotenv'
+import connectDB from './src/db/index.js'
+// let list = [];
 
+app.use(cors());
 app.use(bodyParser.json());
-// Route to handle the POST request
-app.post('/update', (req, res) => {
-  // Access the data sent in the request body
-  const postData = req.body;
-//   console.log(postData.name);
-  list.push(postData);
-  console.log('Received data:', postData);
-  res.send(list);
-});
+app.use(Users);
+
+dotenv.config({
+    path:'./env'
+})
 
 
 // Defining the port and making the server to listen.
 const port = 3000; // You can use environment variables for port configuration
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+
+
+// This function will be connceting the database.
+connectDB()
+.then(() => {
+    app.listen(process.env.PORT || 8000, () => {
+        console.log(`Server is running at port : ${process.env.PORT || 8000}`);
+    })
+})
+.catch((err) => {
+    console.log("MONGO db connection failed !!! ", err);
+})

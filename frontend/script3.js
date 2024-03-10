@@ -33,7 +33,7 @@ addNewUser.addEventListener('click',(event)=> {
     password:pvalue
   }
   // Convert the data to a JSON string
-  fetch('http://localhost:3000/update', {
+  fetch('http://localhost:3000/users', {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
@@ -43,32 +43,15 @@ addNewUser.addEventListener('click',(event)=> {
 })
    .then(response => response.json())
    .then(response => {
-    if(response === false) {
-      alert("User already Exists");
-      return;
-    }
     return console.log(JSON.stringify(response))})
    
   statusUpdate.textContent = 'User Added Successfully!';
 });
 
 // // This function will check if there's an existing username with the same username that is entered.
-// existingUser.addEventListener('click',(event)=> {
-//   checkInputValidity();
-//   event.preventDefault();
-//   let login = false;
-//   for(u in list) {
-//     if(list[u].name === username.value) {
-//       console.log(`${username.value} successfully logged in.`)
-//       statusUpdate.textContent = `${username.value} successfully logged in.`
-//       login = true;
-//     }
-//   }
-//   if(!login) {
-//     statusUpdate.textContent = `User doesn't exist. Kindly SignUp!`
-
-//   } 
-// })
+existingUser.addEventListener('click',(event)=> {
+  event.preventDefault();
+})
 
 
 // // This will check whether the username and password fields are filled or not.
