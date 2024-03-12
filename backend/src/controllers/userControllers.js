@@ -8,14 +8,24 @@ const userController  = {
     // Controller for creating a user.
     createUser: async(req,res)=> {
         try{
+
             console.log(req.body)
+            const usernameMatch = await Users.findOne({username:req.body.name1})
+            const passwordMatch = await Users.findOne({password:req.body.password})
+            if(usernameMatch && passwordMatch) {
+                console.log(req.body);
+                res.status(200).json({message:"User already exists. Kindly login!"})
+            }
+            else {
             const us = new Users({
                 username:req.body.name1,
                 password:req.body.password
             })
+
+
             await us.save()
             
-        res.status(201).json({message:"User created successfully."});
+        res.status(201).json({message:"User created successfully."}); }
     }
     catch(error) {
         console.error('Error creating user:', error);
@@ -37,6 +47,8 @@ const userController  = {
             res.status(400).json({error:"Unable to find the user. Please try again."})
         }
     },
+
+
     // Controller for deleting the user, by just specifying the username.
     deleteUser: async(req,res)=> {
         try {
@@ -66,4 +78,6 @@ const userController  = {
     }
 }
 
+
+// Using modulejs, that's why there's a need to export the controller, so it can be used in other modules.
 export default userController
