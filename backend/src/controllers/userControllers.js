@@ -44,7 +44,7 @@ const userController  = {
             }
             else throw error
         } catch (error) {
-            res.status(400).json({error:"Unable to find the user. Please try again."})
+            res.status(400).json({error:"Unable to find the user. Please try again.",status:400})
         }
     },
 
@@ -57,7 +57,7 @@ const userController  = {
             res.status(202).json({message:"User deleted Successully."})
         } catch (error) {
             console.error(error);
-            res.status(500).json({error:"Unable to delete the user. Internal Server Error."})
+            res.status(500).json({error:"Unable to delete the user. Internal Server Error.",status:500})
         }
     },
     updateUser:async(req,res)=> {
