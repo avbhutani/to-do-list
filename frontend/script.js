@@ -7,7 +7,10 @@ let removeElement = document.querySelector(
   ".task-boxes-list-item-container"
 );
 var count = 0
-
+var urlParams = new URLSearchParams(window.location.search);
+var username = urlParams.get('username');
+const loggedInUser = document.getElementById('login-user');
+loggedInUser.textContent = username
 // This gets the name of the first user.
 let currentUser = document.getElementById('login-user').textContent;
 let listItemProperties = document.getElementById(

@@ -3,7 +3,7 @@ const password = document.getElementById('password')
 const addNewUser = document.getElementById('new-user-button')
 const existingUser = document.getElementById('login-button')
 const statusUpdate = document.getElementById('display-status')
-
+const loggedInUser = document.getElementById('login-user');
 let list = [];
 var user,pass;
 
@@ -28,7 +28,10 @@ addNewUser.addEventListener('click',(event)=> {
   //   alert(`Password should be atleast 8 chars long!`);
   //   return;
   // }
-
+  if(!uvalue || !pvalue) {
+    alert(`Fields cannot be empty!`)
+    return
+  }
   let tempUser = {
     name1:uvalue,
     password:pvalue
@@ -46,36 +49,16 @@ addNewUser.addEventListener('click',(event)=> {
 })
    .then(response => response.json())
    .then(response => {
-    return console.log(JSON.stringify(response))})
+    if(response.status == 500) {
+      statusUpdate.textContent = "User Already Exists. Kindly Login!"
+    }
+    else{
+    console.log(JSON.stringify(response))}}) 
    
   statusUpdate.textContent = 'User Added Successfully!';
 });
 
 
-// this is used for adding the functionality of deleting a particular user.
-// existingUser1.addEventListener('click',(event)=> {
-//   event.preventDefault();
-
-//   let uvalue = username.value;
-//   let pvalue = password.value;
-//   let tempuser = {
-//     name1: uvalue,
-//     password:pvalue
-//   }
-//   fetch('http://localhost:8000/users/delete', {
-//     method: 'POST',
-//     headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(tempuser)
-// })
-//    .then(response => response.json())
-//    .then(response => {
-//     return console.log(JSON.stringify(response))})
-   
-//   statusUpdate.textContent = 'User Deleted Successfully!';
-// })
 
 
 existingUser.addEventListener('click',(event)=> {
@@ -86,6 +69,10 @@ existingUser.addEventListener('click',(event)=> {
     name1: uvalue,
     password:pvalue
   }
+if(!uvalue || !pvalue) {
+  alert(`Fields cannot be empty!`)
+  return
+}
   fetch('http://localhost:8000/users/login', {
     method: 'POST',
     headers: {
@@ -99,7 +86,13 @@ existingUser.addEventListener('click',(event)=> {
     if(response.status == 400) {
       statusUpdate.textContent = response.error
     }
+    else if(response.status == 401) {
+      statusUpdate.textContent = response.error
+    }
     else {
+      window.location.href = "http://127.0.0.1:5500/frontend/index.html"
+      loggedInUser.textContent = uvalue;
+      browser.cookies.set()
       statusUpdate.textContent = response.message
     }
     console.log(JSON.stringify(response))
@@ -144,3 +137,27 @@ existingUser.addEventListener('click',(event)=> {
 // }
 
 
+// this is used for adding the functionality of deleting a particular user.
+// existingUser1.addEventListener('click',(event)=> {
+//   event.preventDefault();
+
+//   let uvalue = username.value;
+//   let pvalue = password.value;
+//   let tempuser = {
+//     name1: uvalue,
+//     password:pvalue
+//   }
+//   fetch('http://localhost:8000/users/delete', {
+//     method: 'POST',
+//     headers: {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(tempuser)
+// })
+//    .then(response => response.json())
+//    .then(response => {
+//     return console.log(JSON.stringify(response))})
+   
+//   statusUpdate.textContent = 'User Deleted Successfully!';
+// })
