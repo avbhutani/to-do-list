@@ -6,23 +6,11 @@ const todolistSchema = new mongoose.Schema(
             type:mongoose.Schema.Types.ObjectId,
             ref:'Users'
         },
-        taskId: {
-            type:Number,
-            required:true,
-            unique:true
-        },
-        taskContent: {
-            type:String,
-            required:true
-        },
-        editNote: {
-            type:String,
-        },
-        createdBy: {
-            type:String,
-            required:true,
+        todos:{
+            type:mongoose.Schema.Type.ObjectId,
+            ref:'todoItem'
         }
-    },{timestamps:true}
+    }
 );
 
 export const Todolist = mongoose.model('Todolist',todolistSchema);

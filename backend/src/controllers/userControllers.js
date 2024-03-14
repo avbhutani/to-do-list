@@ -11,17 +11,16 @@ const userController  = {
 
             console.log(req.body)
             const usernameMatch = await Users.findOne({username:req.body.name1})
-            const passwordMatch = await Users.findOne({password:req.body.password})
-            if(usernameMatch && passwordMatch) {
+            if(usernameMatch) {
                 console.log(req.body);
-                res.status(200).json({message:"User already exists. Kindly login!"})
+                res.status(200).json({message:"User already exists. Kindly login!",status:500})
             }
             else {
             const us = new Users({
                 username:req.body.name1,
                 password:req.body.password
             })
-
+            
 
             await us.save()
             
@@ -29,7 +28,7 @@ const userController  = {
     }
     catch(error) {
         console.error('Error creating user:', error);
-        res.status(500).json({ error: 'Unable to create the User. Internal Server Error.' });
+        res.status(500).json({ error: 'Unable to create the User. Internal Server Error.',status:500});
     }
     },
 
@@ -41,6 +40,9 @@ const userController  = {
             if(usernameMatch && passwordMatch) {
                 console.log(req.body);
                 res.status(200).json({message:`${req.body.name1} Successfully logged in.`})
+            }
+            else if(usernameMatch && !passwordMatch) {
+                res.status(400).json({error:`Incorrect Password. Kindly Try Again!`,status:401})
             }
             else throw error
         } catch (error) {
@@ -60,10 +62,6 @@ const userController  = {
             res.status(500).json({error:"Unable to delete the user. Internal Server Error.",status:500})
         }
     },
-    updateUser:async(req,res)=> {
-
-    },
-
     // Controller for reading/getting the details of a particular user.
     readUser:async(req,res)=> {
         try {
