@@ -1,4 +1,4 @@
-const username = document.getElementById('username')
+const username1 = document.getElementById('username')
 const password = document.getElementById('password')
 const addNewUser = document.getElementById('new-user-button')
 const existingUser = document.getElementById('login-button')
@@ -15,7 +15,7 @@ addNewUser.addEventListener('click',(event)=> {
   // checkInputValidity();
   event.preventDefault();
 
-  let uvalue = username.value;
+  let uvalue = username1.value;
   let pvalue = password.value;
   // if the username is not valid,then return.
   // if(!checkValidUsername(uvalue)) {
@@ -63,7 +63,7 @@ addNewUser.addEventListener('click',(event)=> {
 
 existingUser.addEventListener('click',(event)=> {
   event.preventDefault();
-  let uvalue = username.value;
+  let uvalue = username1.value;
   let pvalue = password.value;
   let tempuser = {
     name1: uvalue,

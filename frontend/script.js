@@ -26,12 +26,9 @@ var t;
 // Function to trigger when the add button in the menu is clicked.
 var addNoteContent;
 taskListAddButton.addEventListener("click", () => {
-  tet = "";
-  t = `${new Date().getUTCDate()} ${new Date().getUTCMonth()} => ${new Date().getHours()}:${new Date().getMinutes()}`;
-  timestampId.textContent = t;
   if(addnote.value)
     addnote.value = "";
-  editContent.value = ""
+    editContent.value = ""
   listItemProperties.style.display = "block";
 });
 

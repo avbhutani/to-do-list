@@ -3,7 +3,8 @@ import bodyParser from 'body-parser'
 const app = express();
 import cors from 'cors'
 import dotenv from 'dotenv'
-import router from './src/routes/userRoutes.js'
+import UserRoutes from './src/routes/userRoutes.js'
+import todoRoutes from './src/routes/todoroutes.js'
 import connectDB from './src/db/index.js'
 // import bodyParser from 'body-parser'
 // let list = [];
@@ -11,7 +12,12 @@ import connectDB from './src/db/index.js'
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-app.use(router);
+
+// for accessing the api's of the user function.
+app.use(UserRoutes);
+
+// for accessing the api's of the general to do addition and updation functions.
+app.use(todoRoutes);
 
 dotenv.config({
     path:'./env'

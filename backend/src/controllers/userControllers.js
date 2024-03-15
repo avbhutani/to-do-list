@@ -72,7 +72,6 @@ const userController  = {
         catch(error){ 
             res.status(500).json({error:"Unable to read the user details."})
         }
-        
     }
 }
 

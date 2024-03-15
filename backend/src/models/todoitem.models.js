@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 const todoitemSchema = new mongoose.Schema({
-    users:{
+    createdBy:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Users'
     },
@@ -13,6 +13,11 @@ const todoitemSchema = new mongoose.Schema({
     extraNote:{
         type:String,
         lowercase:true
+    },
+    taskStatus:{
+        type:Boolean,
+        required:true,
+        default:false
     }
 },{timestamps:true})
 
