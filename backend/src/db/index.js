@@ -8,7 +8,7 @@ dotenv.config({
 
 const connectDB = async () => {
     try {
-        const connectionInstance = await mongoose.connect(`mongodb+srv://anubhavbhutani:anubhavbhutani@learningcluster.iai86o4.mongodb.net/?retryWrites=true&w=majority&appName=learningcluster`);
+        const connectionInstance = await mongoose.connect(`database-link`);
         console.log(`MongoDB connected : DB HOST : ${connectionInstance.connection.host}`)
     }
     catch(error) {
