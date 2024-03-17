@@ -8,7 +8,8 @@ const todoitemSchema = new mongoose.Schema({
     taskContent:{
         type:String,
         required:true,
-        lowercase:true
+        lowercase:true,
+        unique:true 
     },
     extraNote:{
         type:String,
