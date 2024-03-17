@@ -60,7 +60,7 @@ addNewUser.addEventListener('click',(event)=> {
 
 
 
-
+// handles the login button and conditions for logging in.
 existingUser.addEventListener('click',(event)=> {
   event.preventDefault();
   let uvalue = username1.value;
@@ -73,6 +73,8 @@ if(!uvalue || !pvalue) {
   alert(`Fields cannot be empty!`)
   return
 }
+    
+    // Redirect to the next page
   fetch('http://localhost:8000/users/login', {
     method: 'POST',
     headers: {
@@ -90,6 +92,7 @@ if(!uvalue || !pvalue) {
       statusUpdate.textContent = response.error
     }
     else {
+      document.cookie = "username=" + encodeURIComponent(uvalue);
       window.location.href = "http://127.0.0.1:5500/frontend/index.html"
       loggedInUser.textContent = uvalue;
       browser.cookies.set()
@@ -101,7 +104,7 @@ if(!uvalue || !pvalue) {
 })
 // // This function will check if there's an existing username with the same username that is entered.
 
-
+ 
 
 // // This will check whether the username and password fields are filled or not.
 // function checkInputValidity() {
